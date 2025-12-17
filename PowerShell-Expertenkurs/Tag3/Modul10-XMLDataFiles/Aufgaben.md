@@ -163,13 +163,13 @@ Convert-XmlToHtml -Xml $xml -Title "Produktliste" | Out-File "products.html"
 
 ## Bewertungskriterien
 
-| Kriterium | Punkte |
-|-----------|--------|
-| XML korrekt geladen und navigiert | 20 |
-| XPath-Abfragen funktionieren | 25 |
-| XML erstellen und modifizieren | 25 |
-| Fehlerbehandlung bei XML-Operationen | 15 |
-| Bonus: XML-Transformation | 15 |
+| Kriterium                            | Punkte |
+| ------------------------------------ | ------ |
+| XML korrekt geladen und navigiert    | 20     |
+| XPath-Abfragen funktionieren         | 25     |
+| XML erstellen und modifizieren       | 25     |
+| Fehlerbehandlung bei XML-Operationen | 15     |
+| Bonus: XML-Transformation            | 15     |
 
 ---
 
@@ -200,17 +200,17 @@ $xml.Save("file.xml")
 
 ### XPath Cheat Sheet:
 
-| XPath | Beschreibung |
-|-------|-------------|
-| `//Element` | Alle Elements überall |
-| `/Root/Child` | Absoluter Pfad |
+| XPath                      | Beschreibung              |
+| -------------------------- | ------------------------- |
+| `//Element`                | Alle Elements überall     |
+| `/Root/Child`              | Absoluter Pfad            |
 | `//Element[@attr='value']` | Element mit Attribut-Wert |
-| `//Element[Child='value']` | Element mit Kind-Wert |
-| `//Element[position()=1]` | Erstes Element |
-| `//Element[last()]` | Letztes Element |
-| `//Element[Price>100]` | Numerischer Vergleich |
-| `//Element/text()` | Textinhalt |
-| `//@attribute` | Alle Attribute |
+| `//Element[Child='value']` | Element mit Kind-Wert     |
+| `//Element[position()=1]`  | Erstes Element            |
+| `//Element[last()]`        | Letztes Element           |
+| `//Element[Price>100]`     | Numerischer Vergleich     |
+| `//Element/text()`         | Textinhalt                |
+| `//@attribute`             | Alle Attribute            |
 
 ---
 

@@ -59,7 +59,7 @@ Erstellen Sie eine Funktion `New-UserAccount` mit detaillierter Parameter-Dokume
 **Beispiel für Tabelle in Dokumentation:**
 ```
 | Rolle     | Lesen | Schreiben | Admin |
-|-----------|-------|-----------|-------|
+| --------- | ----- | --------- | ----- |
 | User      | Ja    | Nein      | Nein  |
 | PowerUser | Ja    | Ja        | Nein  |
 | Admin     | Ja    | Ja        | Ja    |
@@ -154,13 +154,13 @@ Die Datei sollte in `en-US/` oder `de-DE/` Ordner liegen und per `Get-Help about
 
 ## Bewertungskriterien
 
-| Kriterium | Punkte |
-|-----------|--------|
-| Vollständige Help-Keywords verwendet | 25 |
-| Beispiele sind praxisnah und progressiv | 25 |
-| Parameter detailliert dokumentiert | 20 |
-| Formatierung und Lesbarkeit | 15 |
-| About-Topic (Bonus) | 15 |
+| Kriterium                               | Punkte |
+| --------------------------------------- | ------ |
+| Vollständige Help-Keywords verwendet    | 25     |
+| Beispiele sind praxisnah und progressiv | 25     |
+| Parameter detailliert dokumentiert      | 20     |
+| Formatierung und Lesbarkeit             | 15     |
+| About-Topic (Bonus)                     | 15     |
 
 ---
 

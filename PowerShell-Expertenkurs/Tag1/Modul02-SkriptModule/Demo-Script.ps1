@@ -42,8 +42,8 @@ $env:PSModulePath -split ';' | ForEach-Object {
 # === DEMO 1.2: Installierte Module anzeigen ===
 Write-Host "`nBeispiele installierter Module:" -ForegroundColor Yellow
 Get-Module -ListAvailable | 
-    Select-Object Name, Version, ModuleType, Path -First 10 | 
-    Format-Table -AutoSize
+Select-Object Name, Version, ModuleType, Path -First 10 | 
+Format-Table -AutoSize
 
 # === DEMO 1.3: Modul-Typen ===
 Write-Host @"
@@ -165,7 +165,8 @@ Get-Command -Module SimpleTools
 Write-Host "`nTest: Private Funktion aufrufen (sollte Fehler geben):" -ForegroundColor Yellow
 try {
     Get-CurrentTimestamp
-} catch {
+}
+catch {
     Write-Host "  Erwarteter Fehler: Die Funktion ist privat!" -ForegroundColor Red
 }
 
@@ -249,8 +250,8 @@ $AdvancedModulePath = Join-Path $ModuleDemoPath "ServerTools"
 
 Write-Host "Modul-Struktur:" -ForegroundColor Yellow
 Get-ChildItem $AdvancedModulePath -Recurse | 
-    Select-Object FullName | 
-    ForEach-Object { Write-Host "  $($_.FullName)" }
+Select-Object FullName | 
+ForEach-Object { Write-Host "  $($_.FullName)" }
 
 # === DEMO 4.2: Private Funktionen ===
 $PrivateFunction = @'

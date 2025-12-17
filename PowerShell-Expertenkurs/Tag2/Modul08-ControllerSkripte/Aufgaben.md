@@ -182,13 +182,13 @@ Erstellen Sie ein Controller-Skript mit verschachtelten Menüs für Server-Admin
 
 ## Bewertungskriterien
 
-| Kriterium | Punkte |
-|-----------|--------|
-| Funktionierendes Menüsystem | 25 |
-| Eingabevalidierung | 25 |
-| Logging-Integration | 20 |
-| Benutzerfreundlichkeit | 15 |
-| Code-Struktur und Lesbarkeit | 15 |
+| Kriterium                    | Punkte |
+| ---------------------------- | ------ |
+| Funktionierendes Menüsystem  | 25     |
+| Eingabevalidierung           | 25     |
+| Logging-Integration          | 20     |
+| Benutzerfreundlichkeit       | 15     |
+| Code-Struktur und Lesbarkeit | 15     |
 
 ---
 

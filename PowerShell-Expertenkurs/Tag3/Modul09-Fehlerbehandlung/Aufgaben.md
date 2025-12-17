@@ -182,13 +182,13 @@ $myError | Get-ErrorAnalysis -IncludeStackTrace
 
 ## Bewertungskriterien
 
-| Kriterium | Punkte |
-|-----------|--------|
-| Try/Catch/Finally korrekt verwendet | 20 |
-| Spezifische Exception-Typen gefangen | 20 |
-| ErrorAction/ErrorVariable eingesetzt | 20 |
-| Retry-Logik implementiert | 20 |
-| Error Records analysiert (Bonus) | 20 |
+| Kriterium                            | Punkte |
+| ------------------------------------ | ------ |
+| Try/Catch/Finally korrekt verwendet  | 20     |
+| Spezifische Exception-Typen gefangen | 20     |
+| ErrorAction/ErrorVariable eingesetzt | 20     |
+| Retry-Logik implementiert            | 20     |
+| Error Records analysiert (Bonus)     | 20     |
 
 ---
 

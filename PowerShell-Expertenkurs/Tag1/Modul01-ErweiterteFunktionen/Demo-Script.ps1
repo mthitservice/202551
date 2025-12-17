@@ -90,11 +90,11 @@ function Get-ProcessMemory {
     switch ($PSCmdlet.ParameterSetName) {
         'ByName' {
             Get-Process -Name $Name | Select-Object Name, Id, 
-                @{N='MemoryMB';E={[math]::Round($_.WorkingSet64/1MB,2)}}
+            @{N = 'MemoryMB'; E = { [math]::Round($_.WorkingSet64 / 1MB, 2) } }
         }
         'ById' {
             Get-Process -Id $Id | Select-Object Name, Id,
-                @{N='MemoryMB';E={[math]::Round($_.WorkingSet64/1MB,2)}}
+            @{N = 'MemoryMB'; E = { [math]::Round($_.WorkingSet64 / 1MB, 2) } }
         }
     }
 }
@@ -154,9 +154,9 @@ function Get-StoppedServiceDependency {
     
     Get-Service | Where-Object Status -eq 'Stopped' | ForEach-Object {
         [PSCustomObject]@{
-            Name = $_.Name
-            DisplayName = $_.DisplayName
-            Status = $_.Status
+            Name              = $_.Name
+            DisplayName       = $_.DisplayName
+            Status            = $_.Status
             DependentServices = ($_.DependentServices.Name -join ', ')
         }
     }
@@ -186,12 +186,12 @@ function Get-ServiceDependencyInfo {
         Write-Verbose "Verarbeite Service: $($svc.Name)"
         
         [PSCustomObject]@{
-            Name = $svc.Name
-            DisplayName = $svc.DisplayName
-            Status = $svc.Status
-            StartType = $svc.StartType
+            Name              = $svc.Name
+            DisplayName       = $svc.DisplayName
+            Status            = $svc.Status
+            StartType         = $svc.StartType
             DependentServices = ($svc.DependentServices.Name -join ', ')
-            RequiredServices = ($svc.ServicesDependedOn.Name -join ', ')
+            RequiredServices  = ($svc.ServicesDependedOn.Name -join ', ')
         }
     }
 }
@@ -246,9 +246,9 @@ function Get-DiskSpaceReport {
         Write-Verbose "DriveType Filter: $DriveType"
         
         $driveTypeMap = @{
-            'Fixed' = 3
+            'Fixed'     = 3
             'Removable' = 2
-            'Network' = 4
+            'Network'   = 4
         }
     }
     
@@ -259,7 +259,8 @@ function Get-DiskSpaceReport {
             try {
                 $filter = if ($DriveType -eq 'All') {
                     "DriveType=2 OR DriveType=3 OR DriveType=4"
-                } else {
+                }
+                else {
                     "DriveType=$($driveTypeMap[$DriveType])"
                 }
                 
@@ -270,14 +271,14 @@ function Get-DiskSpaceReport {
                 
                 foreach ($disk in $disks) {
                     [PSCustomObject]@{
-                        PSTypeName = 'DiskSpaceReport'
+                        PSTypeName   = 'DiskSpaceReport'
                         ComputerName = $computer
-                        Drive = $disk.DeviceID
-                        VolumeName = $disk.VolumeName
-                        SizeGB = [math]::Round($disk.Size / 1GB, 2)
-                        FreeSpaceGB = [math]::Round($disk.FreeSpace / 1GB, 2)
-                        UsedSpaceGB = [math]::Round(($disk.Size - $disk.FreeSpace) / 1GB, 2)
-                        PercentFree = [math]::Round(($disk.FreeSpace / $disk.Size) * 100, 2)
+                        Drive        = $disk.DeviceID
+                        VolumeName   = $disk.VolumeName
+                        SizeGB       = [math]::Round($disk.Size / 1GB, 2)
+                        FreeSpaceGB  = [math]::Round($disk.FreeSpace / 1GB, 2)
+                        UsedSpaceGB  = [math]::Round(($disk.Size - $disk.FreeSpace) / 1GB, 2)
+                        PercentFree  = [math]::Round(($disk.FreeSpace / $disk.Size) * 100, 2)
                     }
                 }
             }

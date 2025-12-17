@@ -40,17 +40,17 @@ function Get-HighCpuProcess {
     Write-Verbose "Gefunden: $($processes.Count) Prozesse über dem Schwellwert"
     
     $processes | 
-        Sort-Object CPU -Descending | 
-        Select-Object -First $Top |
-        ForEach-Object {
-            [PSCustomObject]@{
-                Name = $_.Name
-                Id = $_.Id
-                CPUSeconds = [math]::Round($_.CPU, 2)
-                WorkingSetMB = [math]::Round($_.WorkingSet64 / 1MB, 2)
-                StartTime = $_.StartTime
-            }
+    Sort-Object CPU -Descending | 
+    Select-Object -First $Top |
+    ForEach-Object {
+        [PSCustomObject]@{
+            Name         = $_.Name
+            Id           = $_.Id
+            CPUSeconds   = [math]::Round($_.CPU, 2)
+            WorkingSetMB = [math]::Round($_.WorkingSet64 / 1MB, 2)
+            StartTime    = $_.StartTime
         }
+    }
     
     Write-Verbose "Ausgabe abgeschlossen"
 }
@@ -124,7 +124,8 @@ function Get-ServiceHealthReport {
         # oder wenn Service nicht Automatic ist (dann ist Stopped OK)
         $isHealthy = if ($svc.StartType -eq 'Automatic') {
             $svc.Status -eq 'Running'
-        } else {
+        }
+        else {
             $true  # Non-Automatic Services sind immer "gesund"
         }
         
@@ -133,9 +134,9 @@ function Get-ServiceHealthReport {
         [PSCustomObject]@{
             ServiceName = $svc.Name
             DisplayName = $svc.DisplayName
-            Status = $svc.Status
-            StartType = $svc.StartType
-            IsHealthy = $isHealthy
+            Status      = $svc.Status
+            StartType   = $svc.StartType
+            IsHealthy   = $isHealthy
         }
     }
     
@@ -148,9 +149,9 @@ function Get-ServiceHealthReport {
 # Test der Lösung
 Write-Host "`n=== Test Aufgabe 2 ===" -ForegroundColor Cyan
 Get-ServiceHealthReport -Status Stopped -StartType Automatic -Verbose | 
-    Where-Object { -not $_.IsHealthy } | 
-    Select-Object -First 5 |
-    Format-Table -AutoSize
+Where-Object { -not $_.IsHealthy } | 
+Select-Object -First 5 |
+Format-Table -AutoSize
 
 #endregion
 
@@ -187,9 +188,9 @@ function Get-FolderSizeReport {
             HelpMessage = "Geben Sie den zu analysierenden Pfad an"
         )]
         [ValidateScript({
-            if (Test-Path $_) { $true }
-            else { throw "Pfad '$_' existiert nicht!" }
-        })]
+                if (Test-Path $_) { $true }
+                else { throw "Pfad '$_' existiert nicht!" }
+            })]
         [string]$Path,
         
         [Parameter(Position = 1)]
@@ -224,10 +225,10 @@ function Get-FolderSizeReport {
                 
                 if ($sizeMB -ge $MinimumSizeMB) {
                     $results += [PSCustomObject]@{
-                        Name = $folder.Name
-                        FullPath = $folder.FullName
-                        Type = 'Folder'
-                        SizeMB = $sizeMB
+                        Name      = $folder.Name
+                        FullPath  = $folder.FullName
+                        Type      = 'Folder'
+                        SizeMB    = $sizeMB
                         ItemCount = $folderItems.Count
                     }
                 }
@@ -253,10 +254,10 @@ function Get-FolderSizeReport {
                 
                 if ($sizeMB -ge $MinimumSizeMB) {
                     $results += [PSCustomObject]@{
-                        Name = $file.Name
-                        FullPath = $file.FullName
-                        Type = 'File'
-                        SizeMB = $sizeMB
+                        Name      = $file.Name
+                        FullPath  = $file.FullName
+                        Type      = 'File'
+                        SizeMB    = $sizeMB
                         ItemCount = $null
                     }
                 }
@@ -276,8 +277,8 @@ function Get-FolderSizeReport {
 # Test der Lösung
 Write-Host "`n=== Test Aufgabe 3 ===" -ForegroundColor Cyan
 Get-FolderSizeReport -Path $env:USERPROFILE -Depth 1 -MinimumSizeMB 10 -Verbose | 
-    Select-Object -First 10 |
-    Format-Table -AutoSize
+Select-Object -First 10 |
+Format-Table -AutoSize
 
 #endregion
 
@@ -332,7 +333,7 @@ function Get-FolderSizeReportAdvanced {
     
     # Pfad aus ParameterSet ermitteln
     $targetPath = switch ($PSCmdlet.ParameterSetName) {
-        'ByPath'  { $Path }
+        'ByPath' { $Path }
         'ByDrive' { "${DriveLetter}:\" }
     }
     
@@ -361,10 +362,10 @@ function Get-FolderSizeReportAdvanced {
                 
                 if ($sizeMB -ge $MinimumSizeMB) {
                     $results += [PSCustomObject]@{
-                        Name = $folder.Name
-                        FullPath = $folder.FullName
-                        Type = 'Folder'
-                        SizeMB = $sizeMB
+                        Name      = $folder.Name
+                        FullPath  = $folder.FullName
+                        Type      = 'Folder'
+                        SizeMB    = $sizeMB
                         ItemCount = $folderItems.Count
                     }
                 }
@@ -385,10 +386,10 @@ function Get-FolderSizeReportAdvanced {
             $sizeMB = [math]::Round($file.Length / 1MB, 2)
             if ($sizeMB -ge $MinimumSizeMB) {
                 $results += [PSCustomObject]@{
-                    Name = $file.Name
-                    FullPath = $file.FullName
-                    Type = 'File'
-                    SizeMB = $sizeMB
+                    Name      = $file.Name
+                    FullPath  = $file.FullName
+                    Type      = 'File'
+                    SizeMB    = $sizeMB
                     ItemCount = $null
                 }
             }
@@ -405,7 +406,7 @@ Get-Command Get-FolderSizeReportAdvanced -Syntax
 
 Write-Host "`nTest mit -Path:" -ForegroundColor Yellow
 Get-FolderSizeReportAdvanced -Path $env:USERPROFILE -Depth 1 -MinimumSizeMB 50 -Verbose | 
-    Select-Object -First 3 | Format-Table
+Select-Object -First 3 | Format-Table
 
 Write-Host "Test mit -DriveLetter:" -ForegroundColor Yellow
 # Get-FolderSizeReportAdvanced -DriveLetter C -Depth 1 -MinimumSizeMB 1000 -Verbose | 

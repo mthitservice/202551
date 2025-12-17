@@ -156,14 +156,14 @@ Publish-WebApplication -ApplicationName "MyApp" -Environment Production -Version
 
 ## Bewertungskriterien
 
-| Kriterium | Punkte |
-|-----------|--------|
-| SupportsShouldProcess korrekt implementiert | 20 |
-| ConfirmImpact passend gewählt | 20 |
-| ShouldProcess mit aussagekräftigen Meldungen | 20 |
-| ShouldContinue für kritische Aktionen | 15 |
-| Force-Parameter korrekt implementiert | 15 |
-| Bonus: Komplexes Szenario | 10 |
+| Kriterium                                    | Punkte |
+| -------------------------------------------- | ------ |
+| SupportsShouldProcess korrekt implementiert  | 20     |
+| ConfirmImpact passend gewählt                | 20     |
+| ShouldProcess mit aussagekräftigen Meldungen | 20     |
+| ShouldContinue für kritische Aktionen        | 15     |
+| Force-Parameter korrekt implementiert        | 15     |
+| Bonus: Komplexes Szenario                    | 10     |
 
 ---
 
