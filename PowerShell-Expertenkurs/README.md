@@ -60,15 +60,6 @@ PowerShell-Expertenkurs/
 
 ---
 
-## Hinweise für den Trainer
-
-1. **Vor jeder Demo:** Demo-Script durchgehen und ggf. an lokale Umgebung anpassen
-2. **Während der Übungen:** Aktiv durch den Raum gehen und bei Fragen helfen
-3. **Nach den Übungen:** Gemeinsame Besprechung der Lösungen
-4. **Pausen einhalten:** Regelmäßige Pausen sind wichtig für die Konzentration
-
----
-
 ## Autor
 
 Erstellt für den PowerShell Expertenkurs  
